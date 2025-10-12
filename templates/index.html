@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Price Checker</title>
+    <style>
+        body { font-family: sans-serif; margin: 50px; background: #fafafa; }
+        form { margin-bottom: 20px; }
+        input, select { padding: 10px; width: 400px; }
+        button { padding: 10px 15px; }
+        .result, .error { margin-top: 20px; padding: 15px; border-radius: 6px; }
+        .result { background: #e7f9e7; border: 1px solid #a3e1a3; }
+        .error { background: #fceaea; border: 1px solid #e1a3a3; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Product Price Checker</h1>
+
+    <form method="POST">
+        <label for="product_url">Enter product URL:</label><br><br>
+        <input type="text" id="product_url" name="product_url" placeholder="https://..." required><br><br>
+
+        <label for="mode">Select mode:</label><br><br>
+        <select name="mode" id="mode">
+            <option value="amazon">Amazon</option>
+            <option value="test">Test (GitHub JSON)</option>
+        </select><br><br>
+
+        <button type="submit">Check Price</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if result %}
+    <div class="result">
+        <h2>Result</h2>
+        <p><strong>Product:</strong> {{ result.name }}</p>
+        <p><strong>Price:</strong> ${{ "%.2f"|format(result.price) }}</p>
+        <p><strong>Status:</strong> {{ "In stock" if result.in_stock else "Out of stock" }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
