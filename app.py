@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
-from price_scraper import check_price  # reuse your existing logic
+from price_scraper import check_price  # reuse your existing logi
+
+import os
 
 app = Flask(__name__)
 
@@ -27,4 +29,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
