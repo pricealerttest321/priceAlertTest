@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-	print("✅ Request received")
+    print("✅ Request received")
     result = None
     error = None
 
