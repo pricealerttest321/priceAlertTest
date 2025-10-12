@@ -149,6 +149,7 @@ def send_email_alert(product_name, old_price, new_price):
 
 if __name__ == "__main__":
     # Example usage for testing
+    print("🚀 Flask app starting up...")
     test_url = "https://pricealerttest321.github.io/priceAlertTest/sample_product_data.json"
     amazon_url = "https://www.amazon.com/ATHMILE-Sandals-Comfortable-Fashion-Available/dp/B0BXKVWK7M/?th=1&psc=1"
     check_price(amazon_url, mode="amazon")
